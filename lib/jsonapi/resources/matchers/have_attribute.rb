@@ -17,7 +17,7 @@ module JSONAPI
           resource_class = resource.class
 
           serialized_hash = JSONAPI::ResourceSerializer.new(resource_class).
-            serialize_to_hash(resource).with_indifferent_access
+            serialize_resource_set_to_hash(resource).with_indifferent_access
           expected_key = JSONAPI.configuration.key_formatter.format(name.to_s)
           attributes = serialized_hash["data"]["attributes"]
           return false if attributes.nil?
